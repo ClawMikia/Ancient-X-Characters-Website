@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ancient X — 古代有在</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=Cinzel:wght@400;600;700&family=IM+Fell+English:ital@0;1&family=Noto+Serif+SC:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- ═══ NAVBAR ═══ -->
+<nav id="navbar">
+  <a href="index.html" class="nav-brand">
+    <span class="brand-cn">古代有在</span><span class="brand-x">X</span>
+  </a>
+  <button class="hamburger" id="hamburger" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+  <ul class="nav-links" id="nav-links">
+    <li><a href="index.html" class="nav-link active">Home</a></li>
+    <li><a href="about.html" class="nav-link">About</a></li>
+    <li><a href="characters.html" class="nav-link">Characters</a></li>
+    <li><a href="creator.html" class="nav-link">Creator</a></li>
+  </ul>
+</nav>
+
+<!-- ═══ HERO BANNER ═══ -->
+<section class="hero" id="home">
+  <div class="hero-particles" id="particles"></div>
+  <div class="hero-bg-overlay"></div>
+
+  <!-- Dragons -->
+  <div class="dragon dragon-left">
+    <svg viewBox="0 0 420 500" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <filter id="dragonBlur"><feGaussianBlur stdDeviation="2.5"/></filter>
+        <radialGradient id="eyeGlow1" cx="50%" cy="50%" r="50%">
+          <stop offset="0%" stop-color="#ff2020"/>
+          <stop offset="100%" stop-color="transparent"/>
+        </radialGradient>
+      </defs>
+      <g filter="url(#dragonBlur)">
+        <path d="M120 480 C100 440 80 380 100 310 C120 240 180 210 210 175 C240 140 255 105 230 65 C215 42 195 30 178 18" stroke="#2e5530" stroke-width="22" stroke-linecap="round" fill="none" opacity="0.8"/>
+        <path d="M120 480 C100 440 80 380 100 310 C120 240 180 210 210 175 C240 140 255 105 230 65" stroke="#4a7a48" stroke-width="12" stroke-linecap="round" fill="none" opacity="0.6"/>
+        <path d="M120 480 C155 498 200 505 235 492 C265 480 285 455 275 428" stroke="#2e5530" stroke-width="14" fill="none" opacity="0.7"/>
+        <path d="M270 430 L292 452 M270 430 L295 438 M270 430 L278 412" stroke="#5a8a58" stroke-width="3" stroke-linecap="round" fill="none" opacity="0.8"/>
+        <path d="M105 295 C90 280 85 260 95 248" stroke="#5a8a58" stroke-width="3" fill="none" opacity="0.5"/>
+        <path d="M118 340 C103 325 98 305 108 293" stroke="#5a8a58" stroke-width="2.5" fill="none" opacity="0.5"/>
+      </g>
+      <!-- Head -->
+      <g>
+        <path d="M158 68 C140 45 128 25 150 12 C168 2 192 8 205 32 C218 56 210 78 190 88 C172 96 162 84 158 68Z" fill="#1a2e1c" stroke="#3a5a3c" stroke-width="2"/>
+        <path d="M168 24 L148 2 L162 10" fill="none" stroke="#4a7848" stroke-width="3" stroke-linecap="round"/>
+        <path d="M185 18 L180 -4 L188 6" fill="none" stroke="#4a7848" stroke-width="2.5" stroke-linecap="round"/>
+        <circle cx="178" cy="45" r="7" fill="url(#eyeGlow1)"/>
+        <circle cx="178" cy="45" r="4" fill="#ff1a1a"/>
+        <circle cx="178" cy="45" r="2" fill="#ff6060"/>
+        <path d="M200 40 C218 30 238 25 255 35" fill="none" stroke="#4a7848" stroke-width="2" stroke-linecap="round"/>
+        <path d="M202 50 C222 46 245 47 260 56" fill="none" stroke="#3a6038" stroke-width="1.5" stroke-linecap="round"/>
+        <path d="M172 82 C185 88 200 84 208 74" fill="none" stroke="#5a7a55" stroke-width="2"/>
+        <path d="M168 88 L172 96 M180 90 L181 98 M190 87 L192 95" stroke="#5a7a55" stroke-width="1.5" opacity="0.7"/>
+      </g>
+      <ellipse cx="190" cy="260" rx="90" ry="200" fill="rgba(20,55,22,0.12)"/>
+    </svg>
+  </div>
+
+  <div class="dragon dragon-right">
+    <svg viewBox="0 0 420 500" xmlns="http://www.w3.org/2000/svg" style="transform:scaleX(-1)">
+      <defs>
+        <filter id="dragonBlur2"><feGaussianBlur stdDeviation="2.5"/></filter>
+        <radialGradient id="eyeGlow2" cx="50%" cy="50%" r="50%">
+          <stop offset="0%" stop-color="#ff2020"/>
+          <stop offset="100%" stop-color="transparent"/>
+        </radialGradient>
+      </defs>
+      <g filter="url(#dragonBlur2)">
+        <path d="M120 480 C100 440 80 380 100 310 C120 240 180 210 210 175 C240 140 255 105 230 65 C215 42 195 30 178 18" stroke="#2e5530" stroke-width="22" stroke-linecap="round" fill="none" opacity="0.8"/>
+        <path d="M120 480 C100 440 80 380 100 310 C120 240 180 210 210 175 C240 140 255 105 230 65" stroke="#4a7a48" stroke-width="12" stroke-linecap="round" fill="none" opacity="0.6"/>
+        <path d="M120 480 C155 498 200 505 235 492 C265 480 285 455 275 428" stroke="#2e5530" stroke-width="14" fill="none" opacity="0.7"/>
+        <path d="M270 430 L292 452 M270 430 L295 438 M270 430 L278 412" stroke="#5a8a58" stroke-width="3" stroke-linecap="round" fill="none" opacity="0.8"/>
+      </g>
+      <g>
+        <path d="M158 68 C140 45 128 25 150 12 C168 2 192 8 205 32 C218 56 210 78 190 88 C172 96 162 84 158 68Z" fill="#1a2e1c" stroke="#3a5a3c" stroke-width="2"/>
+        <path d="M168 24 L148 2 L162 10" fill="none" stroke="#4a7848" stroke-width="3" stroke-linecap="round"/>
+        <path d="M185 18 L180 -4 L188 6" fill="none" stroke="#4a7848" stroke-width="2.5" stroke-linecap="round"/>
+        <circle cx="178" cy="45" r="7" fill="url(#eyeGlow2)"/>
+        <circle cx="178" cy="45" r="4" fill="#ff1a1a"/>
+        <circle cx="178" cy="45" r="2" fill="#ff6060"/>
+        <path d="M200 40 C218 30 238 25 255 35" fill="none" stroke="#4a7848" stroke-width="2" stroke-linecap="round"/>
+        <path d="M172 82 C185 88 200 84 208 74" fill="none" stroke="#5a7a55" stroke-width="2"/>
+        <path d="M168 88 L172 96 M180 90 L181 98 M190 87 L192 95" stroke="#5a7a55" stroke-width="1.5" opacity="0.7"/>
+      </g>
+      <ellipse cx="190" cy="260" rx="90" ry="200" fill="rgba(20,55,22,0.12)"/>
+    </svg>
+  </div>
+
+  <!-- Logo / Banner image -->
+  <div class="hero-content">
+    <div class="hero-logo-wrap">
+      <img src="logo.png" alt="古代有在 X" class="hero-logo-img" onerror="this.style.display='none'; document.getElementById('hero-title-fallback').style.display='flex'">
+      <div class="hero-title-fallback" id="hero-title-fallback">
+        <div class="hero-cn">古代有在</div>
+        <div class="hero-en-x">X</div>
+      </div>
+    </div>
+    <div class="hero-tagline">Ancient X · Sample Website</div>
+    <div class="hero-ornament">
+      <div class="orn-line"></div>
+      <svg width="20" height="20" viewBox="0 0 20 20"><polygon points="10,2 18,10 10,18 2,10" fill="none" stroke="#c9a84c" stroke-width="1.5"/><polygon points="10,5 15,10 10,15 5,10" fill="#c9a84c" opacity="0.5"/></svg>
+      <div class="orn-line"></div>
+    </div>
+    <a href="characters.html" class="hero-cta">Explore Characters</a>
+  </div>
+</section>
+
+<!-- ═══ INTRO STRIP ═══ -->
+<section class="intro-strip">
+  <div class="intro-inner">
+    <div class="intro-item">
+      <div class="intro-icon">⚔</div>
+      <div class="intro-text">Ancient Warriors</div>
+    </div>
+    <div class="intro-sep">✦</div>
+    <div class="intro-item">
+      <div class="intro-icon">🐉</div>
+      <div class="intro-text">Draconic Bloodlines</div>
+    </div>
+    <div class="intro-sep">✦</div>
+    <div class="intro-item">
+      <div class="intro-icon">⛩</div>
+      <div class="intro-text">Mythic Realms</div>
+    </div>
+    <div class="intro-sep">✦</div>
+    <div class="intro-item">
+      <div class="intro-icon">✨</div>
+      <div class="intro-text">Ancient Power</div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ HOME PREVIEW ═══ -->
+<section class="home-preview section-wrap">
+  <div class="section-hdr">
+    <div class="shdr-line"></div>
+    <span class="shdr-label">Featured Characters</span>
+    <div class="shdr-line"></div>
+  </div>
+  <div class="preview-grid">
+    <a href="characters.html" class="preview-card">
+      <div class="preview-card-bg"></div>
+      <div class="pcard-corner tl"></div><div class="pcard-corner tr"></div>
+      <div class="pcard-corner bl"></div><div class="pcard-corner br"></div>
+      <div class="preview-card-icon">⚔</div>
+      <div class="preview-card-title">Characters</div>
+      <div class="preview-card-sub">Explore Draconic Warriors & Ancient Legends</div>
+    </a>
+    <a href="about.html" class="preview-card">
+      <div class="preview-card-bg"></div>
+      <div class="pcard-corner tl"></div><div class="pcard-corner tr"></div>
+      <div class="pcard-corner bl"></div><div class="pcard-corner br"></div>
+      <div class="preview-card-icon">📜</div>
+      <div class="preview-card-title">About</div>
+      <div class="preview-card-sub">The Lore & World of Ancient X</div>
+    </a>
+    <a href="creator.html" class="preview-card">
+      <div class="preview-card-bg"></div>
+      <div class="pcard-corner tl"></div><div class="pcard-corner tr"></div>
+      <div class="pcard-corner bl"></div><div class="pcard-corner br"></div>
+      <div class="preview-card-icon">🎨</div>
+      <div class="preview-card-title">Creator</div>
+      <div class="preview-card-sub">Meet the Mind Behind the World</div>
+    </a>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="footer-brand">古代有在 <span>X</span></div>
+  <div class="footer-copy">© 2025 Ancient X · All Rights Reserved</div>
+  <ul class="footer-links">
+    <li><a href="about.html">About</a></li>
+    <li><a href="characters.html">Characters</a></li>
+    <li><a href="creator.html">Creator</a></li>
+  </ul>
+</footer>
+
+<script src="main.js"></script>
+</body>
+</html>

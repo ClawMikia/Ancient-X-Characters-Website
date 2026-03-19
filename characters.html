@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Characters — Ancient X</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=Cinzel:wght@400;600;700&family=IM+Fell+English:ital@0;1&family=Noto+Serif+SC:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- ═══ NAVBAR ═══ -->
+<nav id="navbar">
+  <a href="index.html" class="nav-brand">
+    <span class="brand-cn">古代有在</span><span class="brand-x">X</span>
+  </a>
+  <button class="hamburger" id="hamburger" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+  <ul class="nav-links" id="nav-links">
+    <li><a href="index.html" class="nav-link">Home</a></li>
+    <li><a href="about.html" class="nav-link">About</a></li>
+    <li><a href="characters.html" class="nav-link active">Characters</a></li>
+    <li><a href="creator.html" class="nav-link">Creator</a></li>
+  </ul>
+</nav>
+
+<!-- ═══ PAGE BANNER ═══ -->
+<div class="page-banner">
+  <div class="page-banner-bg"></div>
+  <div class="page-banner-content">
+    <div class="page-banner-label">Ancient X</div>
+    <h1 class="page-banner-title">Characters</h1>
+    <div class="page-banner-orn">
+      <div class="orn-line"></div>
+      <svg width="16" height="16" viewBox="0 0 16 16"><polygon points="8,1 15,8 8,15 1,8" fill="none" stroke="#c9a84c" stroke-width="1.5"/></svg>
+      <div class="orn-line"></div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ CHARACTERS PAGE ═══ -->
+<main class="chars-main section-wrap">
+
+  <!-- Avatar Selector Row -->
+  <div class="avatar-section">
+    <div class="section-hdr">
+      <div class="shdr-line"></div>
+      <span class="shdr-label">Select Character</span>
+      <div class="shdr-line"></div>
+    </div>
+    <div class="avatar-grid" id="avatarGrid">
+
+      <!-- Avatar 1 -->
+      <button class="avatar-btn active" data-char="0" aria-label="Arhajan">
+        <div class="avatar-frame">
+          <div class="avatar-img-wrap">
+            <img src="char1.jpg" alt="Arhajan" class="avatar-img" onerror="this.style.display='none'">
+            <div class="avatar-placeholder">⚔</div>
+          </div>
+          <div class="avatar-glow"></div>
+          <div class="avatar-corner tl"></div>
+          <div class="avatar-corner tr"></div>
+          <div class="avatar-corner bl"></div>
+          <div class="avatar-corner br"></div>
+        </div>
+        <span class="avatar-name">Arhajan</span>
+      </button>
+
+      <!-- Avatar 2 -->
+      <button class="avatar-btn" data-char="1" aria-label="Selenara">
+        <div class="avatar-frame">
+          <div class="avatar-img-wrap">
+            <img src="char2.jpg" alt="Selenara" class="avatar-img" onerror="this.style.display='none'">
+            <div class="avatar-placeholder">🐉</div>
+          </div>
+          <div class="avatar-glow"></div>
+          <div class="avatar-corner tl"></div>
+          <div class="avatar-corner tr"></div>
+          <div class="avatar-corner bl"></div>
+          <div class="avatar-corner br"></div>
+        </div>
+        <span class="avatar-name">Selenara</span>
+      </button>
+
+      <!-- Avatar 3 -->
+      <button class="avatar-btn" data-char="2" aria-label="Vordekhan">
+        <div class="avatar-frame">
+          <div class="avatar-img-wrap">
+            <img src="char3.jpg" alt="Vordekhan" class="avatar-img" onerror="this.style.display='none'">
+            <div class="avatar-placeholder">🔥</div>
+          </div>
+          <div class="avatar-glow"></div>
+          <div class="avatar-corner tl"></div>
+          <div class="avatar-corner tr"></div>
+          <div class="avatar-corner bl"></div>
+          <div class="avatar-corner br"></div>
+        </div>
+        <span class="avatar-name">Vordekhan</span>
+      </button>
+
+      <!-- Avatar 4 -->
+      <button class="avatar-btn" data-char="3" aria-label="Mei Lungshan">
+        <div class="avatar-frame">
+          <div class="avatar-img-wrap">
+            <img src="char4.jpg" alt="Mei Lungshan" class="avatar-img" onerror="this.style.display='none'">
+            <div class="avatar-placeholder">🌸</div>
+          </div>
+          <div class="avatar-glow"></div>
+          <div class="avatar-corner tl"></div>
+          <div class="avatar-corner tr"></div>
+          <div class="avatar-corner bl"></div>
+          <div class="avatar-corner br"></div>
+        </div>
+        <span class="avatar-name">Mei Lungshan</span>
+      </button>
+
+      <!-- Avatar 5 -->
+      <button class="avatar-btn" data-char="4" aria-label="Kazurath">
+        <div class="avatar-frame">
+          <div class="avatar-img-wrap">
+            <img src="char5.jpg" alt="Kazurath" class="avatar-img" onerror="this.style.display='none'">
+            <div class="avatar-placeholder">⚡</div>
+          </div>
+          <div class="avatar-glow"></div>
+          <div class="avatar-corner tl"></div>
+          <div class="avatar-corner tr"></div>
+          <div class="avatar-corner bl"></div>
+          <div class="avatar-corner br"></div>
+        </div>
+        <span class="avatar-name">Kazurath</span>
+      </button>
+
+      <!-- Avatar 6 — ADD YOUR OWN -->
+      <button class="avatar-btn avatar-add" data-char="5" aria-label="Add Character">
+        <div class="avatar-frame">
+          <div class="avatar-img-wrap">
+            <div class="avatar-placeholder">＋</div>
+          </div>
+          <div class="avatar-glow"></div>
+          <div class="avatar-corner tl"></div>
+          <div class="avatar-corner tr"></div>
+          <div class="avatar-corner bl"></div>
+          <div class="avatar-corner br"></div>
+        </div>
+        <span class="avatar-name">Your Char</span>
+      </button>
+
+    </div>
+  </div>
+
+  <!-- Character Display Area -->
+  <div class="char-display" id="charDisplay">
+
+    <!-- Character Full Art Panel (fades in from right) -->
+    <div class="char-art-panel" id="charArtPanel">
+      <div class="char-art-bg-glow" id="charArtGlow"></div>
+      <div class="char-art-rings">
+        <div class="ring r1"></div>
+        <div class="ring r2"></div>
+        <div class="ring r3"></div>
+      </div>
+      <div class="char-full-art" id="charFullArt">
+        <!-- Full art image — replace src per character -->
+        <img id="charArtImg" src="" alt="" class="char-art-image">
+        <div class="char-art-placeholder" id="charArtPlaceholder">
+          <!-- SVG placeholder art -->
+          <svg viewBox="0 0 280 420" xmlns="http://www.w3.org/2000/svg" class="char-svg-art" id="charSVGArt">
+            <defs>
+              <linearGradient id="robeg" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#2a2a30"/><stop offset="100%" stop-color="#18181e"/></linearGradient>
+              <linearGradient id="hairg" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#e0e4f0"/><stop offset="100%" stop-color="#a0a4b0"/></linearGradient>
+              <radialGradient id="glow1" cx="50%" cy="50%" r="50%"><stop offset="0%" stop-color="rgba(201,168,76,0.18)"/><stop offset="100%" stop-color="transparent"/></radialGradient>
+              <filter id="sf"><feGaussianBlur stdDeviation="8"/></filter>
+            </defs>
+            <!-- Glow aura -->
+            <ellipse cx="140" cy="240" rx="120" ry="180" fill="url(#glow1)"/>
+            <ellipse cx="140" cy="280" rx="80" ry="100" fill="rgba(201,168,76,0.06)" filter="url(#sf)"/>
+            <!-- Energy rings -->
+            <ellipse cx="140" cy="290" rx="95" ry="20" fill="none" stroke="rgba(201,168,76,0.18)" stroke-width="1.5" transform="rotate(-8 140 290)"/>
+            <ellipse cx="140" cy="290" rx="115" ry="26" fill="none" stroke="rgba(201,168,76,0.1)" stroke-width="1" transform="rotate(5 140 290)"/>
+            <!-- Body / Robe -->
+            <path d="M 95 220 C 82 235 70 275 62 380 C 80 374 120 366 140 368 C 160 366 200 374 218 380 C 210 275 198 235 185 220 Z" fill="url(#robeg)" stroke="#3a3a48" stroke-width="1.5"/>
+            <path d="M 110 228 C 107 265 105 310 107 368" fill="none" stroke="#3a3a48" stroke-width="1"/>
+            <path d="M 170 228 C 173 265 175 310 173 368" fill="none" stroke="#3a3a48" stroke-width="1"/>
+            <path d="M 62 380 C 80 374 120 366 140 368 C 160 366 200 374 218 380" fill="none" stroke="#c9a84c" stroke-width="1.8" opacity="0.7"/>
+            <!-- Shoulders -->
+            <ellipse cx="82" cy="215" rx="26" ry="16" fill="#222230" stroke="#c9a84c" stroke-width="1.2" transform="rotate(-12 82 215)"/>
+            <ellipse cx="198" cy="215" rx="26" ry="16" fill="#222230" stroke="#c9a84c" stroke-width="1.2" transform="rotate(12 198 215)"/>
+            <path d="M 66 210 C 70 202 86 200 96 208" fill="none" stroke="#c9a84c" stroke-width="2.2" opacity="0.8"/>
+            <path d="M 214 210 C 210 202 194 200 184 208" fill="none" stroke="#c9a84c" stroke-width="2.2" opacity="0.8"/>
+            <!-- Chest -->
+            <path d="M 110 212 C 113 196 120 190 140 188 C 160 190 167 196 170 212 C 165 218 150 222 140 222 C 130 222 115 218 110 212Z" fill="#252530" stroke="#c9a84c" stroke-width="1.3"/>
+            <polygon points="140,196 146,206 140,215 134,206" fill="#c9a84c" opacity="0.85"/>
+            <!-- Arms -->
+            <path d="M 82 215 C 68 232 60 252 56 272" stroke="#24242e" stroke-width="14" stroke-linecap="round" fill="none"/>
+            <path d="M 198 215 C 212 232 220 252 224 272" stroke="#24242e" stroke-width="14" stroke-linecap="round" fill="none"/>
+            <path d="M 64 242 C 61 252 59 263 57 274" stroke="#c9a84c" stroke-width="1" opacity="0.5" fill="none"/>
+            <path d="M 216 242 C 219 252 221 263 223 274" stroke="#c9a84c" stroke-width="1" opacity="0.5" fill="none"/>
+            <ellipse cx="54" cy="276" rx="12" ry="10" fill="#c8a882" transform="rotate(-20 54 276)"/>
+            <ellipse cx="226" cy="276" rx="12" ry="10" fill="#c8a882" transform="rotate(20 226 276)"/>
+            <!-- Neck -->
+            <rect x="130" y="178" width="20" height="20" rx="6" fill="#c8a882"/>
+            <!-- Head -->
+            <ellipse cx="140" cy="152" rx="38" ry="42" fill="#d4b090"/>
+            <path d="M 110 158 C 114 142 128 132 140 130 C 152 132 166 142 170 158" fill="rgba(0,0,0,0.07)"/>
+            <!-- Eyes -->
+            <ellipse cx="126" cy="150" rx="6.5" ry="5" fill="#1a1a25"/>
+            <ellipse cx="154" cy="150" rx="6.5" ry="5" fill="#1a1a25"/>
+            <ellipse cx="127" cy="149" rx="3" ry="3" fill="#7090b0"/>
+            <ellipse cx="155" cy="149" rx="3" ry="3" fill="#7090b0"/>
+            <circle cx="128" cy="147" r="1.5" fill="#fff"/>
+            <circle cx="156" cy="147" r="1.5" fill="#fff"/>
+            <path d="M 119 142 L 130 146" stroke="#4a4a3a" stroke-width="2.5" stroke-linecap="round"/>
+            <path d="M 161 142 L 150 146" stroke="#4a4a3a" stroke-width="2.5" stroke-linecap="round"/>
+            <path d="M 133 160 C 135 163 145 163 147 160" fill="none" stroke="#a06050" stroke-width="1.8" stroke-linecap="round"/>
+            <path d="M 137 168 C 136 172 138 174 142 173" fill="none" stroke="#b07060" stroke-width="1.3"/>
+            <!-- HAIR -->
+            <path d="M 106 138 C 92 118 90 92 102 78 C 112 66 128 62 140 63 C 152 62 168 66 178 78 C 190 92 188 118 174 138" fill="#d4d8e8"/>
+            <path d="M 104 138 C 84 125 72 104 68 80 C 64 60 70 42 80 38 C 72 52 74 74 86 96 C 94 112 100 128 104 138" fill="#c0c4d4"/>
+            <path d="M 176 138 C 196 125 208 104 212 80 C 216 60 210 42 200 38 C 208 52 206 74 194 96 C 186 112 180 128 176 138" fill="#c0c4d4"/>
+            <!-- Hair spikes -->
+            <path d="M 118 70 C 110 50 106 32 110 18 C 114 30 116 50 118 68" fill="url(#hairg)"/>
+            <path d="M 132 65 C 130 44 132 28 136 16 C 136 30 136 48 134 65" fill="url(#hairg)"/>
+            <path d="M 148 65 C 150 44 148 28 144 16 C 144 30 144 48 146 65" fill="url(#hairg)"/>
+            <path d="M 162 70 C 170 50 174 32 170 18 C 166 30 164 50 162 68" fill="url(#hairg)"/>
+            <path d="M 112 110 C 104 98 100 84 102 72" fill="none" stroke="#e8ecf8" stroke-width="1.8" opacity="0.7"/>
+            <path d="M 168 110 C 176 98 180 84 178 72" fill="none" stroke="#e8ecf8" stroke-width="1.8" opacity="0.7"/>
+            <!-- Draconic antlers -->
+            <path d="M 108 102 C 96 90 88 76 92 64 C 96 76 102 90 108 100" fill="#3a6a3a" opacity="0.65"/>
+            <path d="M 172 102 C 184 90 192 76 188 64 C 184 76 178 90 172 100" fill="#3a6a3a" opacity="0.65"/>
+            <!-- Gold ornament -->
+            <circle cx="140" cy="82" r="6" fill="none" stroke="#c9a84c" stroke-width="1.8" opacity="0.9"/>
+            <circle cx="140" cy="82" r="2.5" fill="#c9a84c"/>
+          </svg>
+        </div>
+      </div>
+      <div class="char-art-name-badge" id="charArtNameBadge">
+        <span id="charArtNameText">Arhajan</span>
+      </div>
+    </div>
+
+    <!-- Cards Column -->
+    <div class="char-cards-col" id="charCardsCol">
+
+      <!-- BIO CARD -->
+      <div class="char-bio-card" id="charBioCard">
+        <div class="card-corner tl"></div>
+        <div class="card-corner tr"></div>
+        <div class="card-corner bl"></div>
+        <div class="card-corner br"></div>
+        <div class="card-header">
+          <div class="card-header-line"></div>
+          <div class="char-title-wrap">
+            <h2 class="char-fullname" id="charName">Arhajan<span class="char-name-dot">.</span></h2>
+          </div>
+          <div class="card-header-line"></div>
+        </div>
+        <div class="bio-grid">
+          <div class="bio-item">
+            <span class="bio-bullet"></span>
+            <span class="bio-key">Name</span>
+            <span class="bio-val" id="bioName">Arhajan Veil</span>
+          </div>
+          <div class="bio-item">
+            <span class="bio-bullet"></span>
+            <span class="bio-key">Date of Birth</span>
+            <span class="bio-val" id="bioDob">3rd Moon, Year 0</span>
+          </div>
+          <div class="bio-item">
+            <span class="bio-bullet"></span>
+            <span class="bio-key">Gender</span>
+            <span class="bio-val" id="bioGender">Male</span>
+          </div>
+          <div class="bio-item">
+            <span class="bio-bullet"></span>
+            <span class="bio-key">Height</span>
+            <span class="bio-val" id="bioHeight">185 cm</span>
+          </div>
+          <div class="bio-item">
+            <span class="bio-bullet"></span>
+            <span class="bio-key">Race</span>
+            <span class="bio-val" id="bioRace">Draconic Halfblood</span>
+          </div>
+          <div class="bio-item">
+            <span class="bio-bullet"></span>
+            <span class="bio-key">Personality</span>
+            <span class="bio-val" id="bioPersonality">Cold · Resolute · Visionary</span>
+          </div>
+        </div>
+        <div class="bio-footer">
+          <button class="heart-btn" id="heartBtn" aria-label="Favorite">
+            <svg id="heartIcon" viewBox="0 0 24 24" width="28" height="28">
+              <path d="M12 21.593c-5.63-5.539-11-10.297-11-14.402 0-3.791 3.068-5.191 5.281-5.191 1.312 0 4.151.501 5.719 4.457 1.59-3.968 4.464-4.447 5.726-4.447 2.54 0 5.274 1.621 5.274 5.181 0 4.069-5.136 8.625-11 14.402z" fill="none" stroke="#c9a84c" stroke-width="1.5"/>
+            </svg>
+          </button>
+          <div class="char-rank" id="charRank">
+            <span class="rank-label">Rank</span>
+            <span class="rank-val" id="bioRank">Sovereign-class</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- STORY CARD -->
+      <div class="char-story-card" id="charStoryCard">
+        <div class="card-corner tl"></div>
+        <div class="card-corner tr"></div>
+        <div class="card-corner bl"></div>
+        <div class="card-corner br"></div>
+        <div class="story-card-header">
+          <div class="story-scroll-icon">📜</div>
+          <span class="story-card-title" id="storyTitle">Chronicles of Arhajan</span>
+        </div>
+        <div class="story-content" id="storyContent">
+          <p>In the age before memory, when the heavens were shattered and the earth reforged from the bones of fallen gods, there arose those who carried the old blood. Arhajan Veil was born beneath a moonless sky, his lineage tracing to the first dragon-sovereign who once ruled the void between worlds.</p>
+          <p>The stories claim that those who inherit draconic essence lose something of their mortal warmth — trading sentiment for clarity, fragility for endurance. Arhajan walks this ancient path, his silver hair a testament to the cold power coursing beneath his skin.</p>
+          <p>At age seventeen, he underwent the Trial of the Hollow Flame — a ritual where candidates are submerged in cursed black water for three days. Only those of true draconic blood emerge without madness. Arhajan emerged on the fourth day, eyes now permanently silvered, bearing the Dragon Crest upon his collarbone.</p>
+          <p>He has since served as the Vanguard of the Eastern Void, a title granted only to those who have slain an Abyssal Dragon without the use of spirit-arms. His blade, Nullfang, was forged from the fangs of the last Pure Dragon of the 3rd Age — a creature he defeated alone at age twenty.</p>
+          <p>Those who encounter him describe a presence like standing at the threshold of something vast and unknowable — a reminder of how brief mortal candles burn against the eternal dark. Yet there are those who claim to have seen him weep once, in the ruins of Shenhao, over the grave of someone whose name he has never spoken aloud.</p>
+        </div>
+        <div class="story-actions">
+          <button class="btn-story" id="btnReadMore">Read More</button>
+          <button class="btn-story btn-outline-story">Gallery</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="footer-brand">古代有在 <span>X</span></div>
+  <div class="footer-copy">© 2025 Ancient X · All Rights Reserved</div>
+  <ul class="footer-links">
+    <li><a href="about.html">About</a></li>
+    <li><a href="characters.html">Characters</a></li>
+    <li><a href="creator.html">Creator</a></li>
+  </ul>
+</footer>
+
+<script src="main.js"></script>
+<script src="characters.js"></script>
+</body>
+</html>

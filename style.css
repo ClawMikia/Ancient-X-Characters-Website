@@ -374,8 +374,11 @@ img { display: block; max-width: 100%; }
   background: none; border: none; cursor: pointer;
   display: flex; flex-direction: column; align-items: center; gap: 10px;
   padding: 0; outline: none;
+  position: relative;
   transition: transform 0.2s;
 }
+.avatar-btn > .avatar-corner.bl { top: 80px; bottom: auto; }
+.avatar-btn > .avatar-corner.br { top: 80px; bottom: auto; }
 .avatar-btn:hover { transform: translateY(-4px); }
 .avatar-btn:focus-visible .avatar-frame { box-shadow: 0 0 0 2px var(--gold); }
 

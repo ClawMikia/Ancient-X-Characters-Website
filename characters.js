@@ -125,6 +125,19 @@ const characters = [
     story: '<p>Lloyd wanders the lands as a ronin, his blade as fast as the wind he commands. He follows a strict code of honor despite having no master to serve, believing that true strength lies in protecting the vulnerable rather than pursuing power.</p><p>His sword technique, known as the Gale Cutter, allows him to strike multiple opponents in the time it takes most warriors to take one step. He appears where needed, aids without question, and vanishes without a trace.</p>'
   },
   {
+    name: 'Leonard & Flannery',
+    folder: 'fighters',
+    img: 'assets/Characters/Ancient X Fighters/Leonard/Leonard & Flanneryromania.png',
+    dob: 'March 22, 1678',
+    height: 188,
+    gender: 'Male & Female',
+    race: 'Twin Blade Dancer',
+    personality: 'Synced · Dynamic · Unstoppable',
+    rank: 'Dual-Master',
+    storyTitle: 'The Twin Dance',
+    story: '<p>Leonard and Flannery fight as one, their movements perfectly synchronized in an ancient twin-blade technique passed down through their bloodline. Though they are two souls, they move as a single entity — each strike doubled, each defense mirrored, each victory achieved through perfect harmony.</p><p>Their dance of blades is said to create whirlwinds of steel, leaving opponents bewildered by the seamless coordination that renders them untouchable in combat.</p>'
+  },
+  {
     name: 'Vladimir',
     folder: 'fighters',
     img: 'assets/Characters/Ancient X Fighters/Vladimir/Vladimir.png',
@@ -535,9 +548,9 @@ function buildAvatarGrid() {
           <img src="${ch.img}" alt="${ch.name}" class="avatar-img" onerror="this.style.display='none'">
         </div>
         <div class="avatar-glow"></div>
-        <div class="avatar-corner tl"></div><div class="avatar-corner tr"></div>
-        <div class="avatar-corner bl"></div><div class="avatar-corner br"></div>
       </div>
+      <div class="avatar-corner tl"></div><div class="avatar-corner tr"></div>
+      <div class="avatar-corner bl"></div><div class="avatar-corner br"></div>
       <span class="avatar-name">${ch.name}</span>
     `;
     grid.appendChild(btn);
@@ -572,7 +585,8 @@ function updateCharDisplay(idx, charList) {
 
   setTimeout(() => {
     if (charArtImg && charSVGArt && artPlaceholder && c.img) {
-      charArtImg.src = c.img;
+      const charImgA = c.img.replace('.png', ' A.png');
+      charArtImg.src = charImgA;
       charArtImg.alt = c.name;
       charArtImg.style.display = 'block';
       charSVGArt.style.display = 'none';

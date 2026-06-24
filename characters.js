@@ -456,54 +456,86 @@ function buildGallery() {
     const grid = document.createElement('div');
     grid.className = 'char-grid';
 
-    group.forEach(ch => {
-      const card = document.createElement('div');
-      card.className = 'char-card';
-      card.innerHTML = `
-        <div class="card-art-wrap">
-          <img src="${ch.img}" alt="${ch.name}" class="card-art" loading="lazy"
-               onerror="this.classList.add('img-broken')">
-        </div>
-        <div class="card-body">
-          <h3 class="card-name">${ch.name}</h3>
-          <div class="card-meta">
-            <div class="meta-row"><span class="meta-key">DOB</span><span class="meta-val">${ch.dob}</span></div>
-            <div class="meta-row"><span class="meta-key">Height</span><span class="meta-val">${fmtHeight(ch.height)}</span></div>
-            <div class="meta-row"><span class="meta-key">Race</span><span class="meta-val">${ch.race}</span></div>
-            <div class="meta-row"><span class="meta-key">Gender</span><span class="meta-val">${ch.gender}</span></div>
-            <div class="meta-row"><span class="meta-key">Rank</span><span class="meta-val">${ch.rank}</span></div>
-            <div class="meta-row"><span class="meta-key">Personality</span><span class="meta-val">${ch.personality}</span></div>
-          </div>
-          <button class="card-story-toggle">Read Story ▸</button>
-          <div class="card-story">
-            <div class="story-title">${ch.storyTitle}</div>
-            <div class="story-text">${ch.story}</div>
-          </div>
-        </div>
-      `;
-      grid.appendChild(card);
-    });
+group.forEach(ch => {
+       const hasLegacy = ch.folder === 'powerful';
+       const cardImgBase = ch.img;
+       const cardImgLegacy = ch.img.replace(/\/[^/]+\.png$/, '/2nd Form A.png');
+       const card = document.createElement('div');
+       card.className = 'char-card';
+       card.innerHTML = `
+         <div class="card-art-wrap${hasLegacy ? ' has-legacy' : ''}">
+           <img src="${cardImgBase}" alt="${ch.name}" class="card-art" loading="lazy"
+                data-base-img="${cardImgBase}" data-legacy-img="${cardImgLegacy}"
+                onerror="this.classList.add('img-broken')">
+           ${hasLegacy ? `
+           <div class="card-form-toggle">
+             <button class="form-btn-card active" data-form="base">Base</button>
+             <button class="form-btn-card" data-form="legacy">Legacy</button>
+           </div>` : ''}
+         </div>
+         <div class="card-body">
+           <h3 class="card-name">${ch.name}</h3>
+           <div class="card-meta">
+             <div class="meta-row"><span class="meta-key">DOB</span><span class="meta-val">${ch.dob}</span></div>
+             <div class="meta-row"><span class="meta-key">Height</span><span class="meta-val">${fmtHeight(ch.height)}</span></div>
+             <div class="meta-row"><span class="meta-key">Race</span><span class="meta-val">${ch.race}</span></div>
+             <div class="meta-row"><span class="meta-key">Gender</span><span class="meta-val">${ch.gender}</span></div>
+             <div class="meta-row"><span class="meta-key">Rank</span><span class="meta-val">${ch.rank}</span></div>
+             <div class="meta-row"><span class="meta-key">Personality</span><span class="meta-val">${ch.personality}</span></div>
+           </div>
+           <button class="card-story-toggle">Read Story ▸</button>
+           <div class="card-story">
+             <div class="story-title">${ch.storyTitle}</div>
+             <div class="story-text">${ch.story}</div>
+           </div>
+         </div>
+        `;
+        grid.appendChild(card);
+      });
 
-    section.appendChild(grid);
-    root.appendChild(section);
-  });
+section.appendChild(grid);
+     root.appendChild(section);
+   });
 
-  document.querySelectorAll('.card-story-toggle').forEach(btn => {
-    btn.addEventListener('click', () => {
-      const story = btn.nextElementSibling;
-      const isOpen = story.classList.contains('open');
-      story.classList.toggle('open');
-      story.style.maxHeight = isOpen ? '0px' : story.scrollHeight + 'px';
-      btn.textContent = isOpen ? 'Read Story ▸' : 'Hide ◂';
-    });
-  });
+   document.querySelectorAll('.card-story-toggle').forEach(btn => {
+     btn.addEventListener('click', () => {
+       const story = btn.nextElementSibling;
+       const isOpen = story.classList.contains('open');
+       story.classList.toggle('open');
+       story.style.maxHeight = isOpen ? '0px' : story.scrollHeight + 'px';
+       btn.textContent = isOpen ? 'Read Story ▸' : 'Hide ◂';
+     });
+   });
 
-  const totalInView = foldersToRender.reduce((sum, fKey) => {
-    return sum + characters.filter(ch => ch.folder === fKey).length;
-  }, 0);
-  const vc = document.getElementById('visibleCount');
-  if (vc) vc.textContent = totalInView;
-}
+   document.querySelectorAll('.card-form-toggle').forEach(toggle => {
+     toggle.addEventListener('click', e => {
+       const btn = e.target.closest('.form-btn-card');
+       if (!btn) return;
+       const form = btn.dataset.form;
+       const cardArt = toggle.closest('.card-art-wrap').querySelector('.card-art');
+       toggle.querySelectorAll('.form-btn-card').forEach(b => b.classList.remove('active'));
+       btn.classList.add('active');
+       if (cardArt && cardArt.dataset.baseImg && cardArt.dataset.legacyImg) {
+         cardArt.style.transition = 'opacity 0.5s cubic-bezier(0.22,1,0.36,1), transform 0.5s cubic-bezier(0.22,1,0.36,1)';
+         cardArt.style.opacity = '0';
+         cardArt.style.transform = 'translateX(60px)';
+         setTimeout(() => {
+           cardArt.src = form === 'base' ? cardArt.dataset.baseImg : cardArt.dataset.legacyImg;
+           setTimeout(() => {
+             cardArt.style.opacity = '1';
+             cardArt.style.transform = 'translateX(0)';
+           }, 50);
+         }, 200);
+       }
+     });
+   });
+
+   const totalInView = foldersToRender.reduce((sum, fKey) => {
+     return sum + characters.filter(ch => ch.folder === fKey).length;
+   }, 0);
+   const vc = document.getElementById('visibleCount');
+   if (vc) vc.textContent = totalInView;
+ }
 
 function buildTabs() {
   const tabBar = document.getElementById('catTabs');
@@ -537,130 +569,163 @@ function buildAvatarGrid() {
 
   const heroChars = chars.length ? chars : characters.slice(0, 6);
 
-  heroChars.forEach((ch, i) => {
-    const btn = document.createElement('button');
-    btn.className = 'avatar-btn' + (i === 0 ? ' active' : '');
-    btn.setAttribute('data-char', i);
-    btn.setAttribute('aria-label', ch.name);
-    btn.innerHTML = `
-      <div class="avatar-frame">
-        <div class="avatar-img-wrap">
-          <img src="${ch.img}" alt="${ch.name}" class="avatar-img" onerror="this.style.display='none'">
-        </div>
-        <div class="avatar-glow"></div>
-      </div>
-      <div class="avatar-corner tl"></div><div class="avatar-corner tr"></div>
-      <div class="avatar-corner bl"></div><div class="avatar-corner br"></div>
-      <span class="avatar-name">${ch.name}</span>
-    `;
-    grid.appendChild(btn);
-  });
+heroChars.forEach((ch, i) => {
+     const btn = document.createElement('button');
+     btn.className = 'avatar-btn' + (i === 0 ? ' active' : '');
+     btn.setAttribute('data-char', i);
+     btn.setAttribute('aria-label', ch.name);
+     btn.innerHTML = `
+       <div class="avatar-frame">
+         <div class="avatar-img-wrap">
+           <img src="${ch.img.replace('.png', ' A.png')}" alt="${ch.name}" class="avatar-img" onerror="this.style.display='none'">
+         </div>
+         <div class="avatar-glow"></div>
+       </div>
+       <div class="avatar-corner tl"></div><div class="avatar-corner tr"></div>
+       <div class="avatar-corner bl"></div><div class="avatar-corner br"></div>
+       <span class="avatar-name">${ch.name}</span>
+     `;
+     grid.appendChild(btn);
+   });
 
   return heroChars;
 }
 
 function updateCharDisplay(idx, charList) {
-  const chars = charList || characters.slice(0, 6);
-  const c = chars[idx];
-  if (!c) return;
+   const chars = charList || characters.slice(0, 6);
+   const c = chars[idx];
+   if (!c) return;
 
-  const charFullArt = document.getElementById('charFullArt');
-  const charArtImg = document.getElementById('charArtImg');
-  const charSVGArt = document.getElementById('charSVGArt');
-  const charArtGlow = document.getElementById('charArtGlow');
-  const charArtNameText = document.getElementById('charArtNameText');
-  const charNameEl = document.getElementById('charName');
-  const bioNameEl = document.getElementById('bioName');
-  const bioDobEl = document.getElementById('bioDob');
-  const bioHeightEl = document.getElementById('bioHeight');
-  const bioRaceEl = document.getElementById('bioRace');
-  const bioGenderEl = document.getElementById('bioGender');
-  const bioRankEl = document.getElementById('bioRank');
-  const bioPersonalityEl = document.getElementById('bioPersonality');
-  const storyTitleEl = document.getElementById('storyTitle');
-  const storyContentEl = document.getElementById('storyContent');
-  const artPlaceholder = document.getElementById('charArtPlaceholder');
+   const charFullArt = document.getElementById('charFullArt');
+   const charArtImg = document.getElementById('charArtImg');
+   const charSVGArt = document.getElementById('charSVGArt');
+   const charArtGlow = document.getElementById('charArtGlow');
+   const charArtNameText = document.getElementById('charArtNameText');
+   const charNameEl = document.getElementById('charName');
+   const bioNameEl = document.getElementById('bioName');
+   const bioDobEl = document.getElementById('bioDob');
+   const bioHeightEl = document.getElementById('bioHeight');
+   const bioRaceEl = document.getElementById('bioRace');
+   const bioGenderEl = document.getElementById('bioGender');
+   const bioRankEl = document.getElementById('bioRank');
+   const bioPersonalityEl = document.getElementById('bioPersonality');
+   const storyTitleEl = document.getElementById('storyTitle');
+   const storyContentEl = document.getElementById('storyContent');
+   const artPlaceholder = document.getElementById('charArtPlaceholder');
+   const formToggleBtns = document.getElementById('formToggleBtns');
 
-  if (charFullArt) charFullArt.classList.remove('visible');
+if (charFullArt) charFullArt.classList.remove('visible');
 
-  setTimeout(() => {
-    if (charArtImg && charSVGArt && artPlaceholder && c.img) {
-      const charImgA = c.img.replace('.png', ' A.png');
-      charArtImg.src = charImgA;
-      charArtImg.alt = c.name;
-      charArtImg.style.display = 'block';
-      charSVGArt.style.display = 'none';
-      artPlaceholder.style.display = 'none';
-      charArtImg.onerror = () => {
-        charArtImg.style.display = 'none';
-        charSVGArt.style.display = 'block';
-        artPlaceholder.style.display = 'block';
-      };
-    }
-    if (charArtGlow) charArtGlow.style.background = 'radial-gradient(ellipse 80% 80% at 50% 40%, rgba(201,168,76,0.18), transparent)';
-    if (charArtNameText) charArtNameText.textContent = c.name;
-    if (charNameEl) charNameEl.innerHTML = c.name + '<span class="char-name-dot">.</span>';
-    if (bioNameEl) bioNameEl.textContent = c.name;
-    if (bioDobEl) bioDobEl.textContent = c.dob;
-    if (bioHeightEl) bioHeightEl.textContent = fmtHeight(c.height);
-    if (bioRaceEl) bioRaceEl.textContent = c.race;
-    if (bioGenderEl) bioGenderEl.textContent = c.gender;
-    if (bioRankEl) bioRankEl.textContent = c.rank;
-    if (bioPersonalityEl) bioPersonalityEl.textContent = c.personality;
-    if (storyTitleEl) storyTitleEl.textContent = c.storyTitle;
-    if (storyContentEl) {
-      storyContentEl.innerHTML = c.story;
-      storyContentEl.style.maxHeight = '100px';
-      storyContentEl.style.overflowY = 'hidden';
-      storyContentEl.style.position = 'relative';
-    }
-    const btnRM = document.getElementById('btnReadMore');
-    if (btnRM) btnRM.textContent = 'Read More ▸';
-    if (charFullArt) requestAnimationFrame(() => charFullArt.classList.add('visible'));
-  }, 80);
-}
+   const isPowerful = c.folder === 'powerful';
+   if (formToggleBtns) {
+     formToggleBtns.style.display = isPowerful ? 'flex' : 'none';
+   }
+
+   setTimeout(() => {
+     if (charArtImg && charSVGArt && artPlaceholder && c.img) {
+       const charImgA = c.img.replace('.png', ' A.png');
+       charArtImg.src = charImgA;
+       charArtImg.alt = c.name;
+       charArtImg.style.display = 'block';
+       charSVGArt.style.display = 'none';
+       artPlaceholder.style.display = 'none';
+       charArtImg.dataset.baseImg = c.img.replace('.png', ' A.png');
+       charArtImg.dataset.legacyImg = c.img.replace(/\/[^/]+\.png$/, '/2nd Form.png');
+       charArtImg.onerror = () => {
+         charArtImg.style.display = 'none';
+         charSVGArt.style.display = 'block';
+         artPlaceholder.style.display = 'block';
+       };
+     }
+     if (charArtGlow) charArtGlow.style.background = 'radial-gradient(ellipse 80% 80% at 50% 40%, rgba(201,168,76,0.18), transparent)';
+     if (charArtNameText) charArtNameText.textContent = c.name;
+     if (charNameEl) charNameEl.innerHTML = c.name + '<span class="char-name-dot">.</span>';
+     if (bioNameEl) bioNameEl.textContent = c.name;
+     if (bioDobEl) bioDobEl.textContent = c.dob;
+     if (bioHeightEl) bioHeightEl.textContent = fmtHeight(c.height);
+     if (bioRaceEl) bioRaceEl.textContent = c.race;
+     if (bioGenderEl) bioGenderEl.textContent = c.gender;
+     if (bioRankEl) bioRankEl.textContent = c.rank;
+     if (bioPersonalityEl) bioPersonalityEl.textContent = c.personality;
+     if (storyTitleEl) storyTitleEl.textContent = c.storyTitle;
+     if (storyContentEl) {
+       storyContentEl.innerHTML = c.story;
+       storyContentEl.style.maxHeight = '100px';
+       storyContentEl.style.overflowY = 'hidden';
+       storyContentEl.style.position = 'relative';
+     }
+     const btnRM = document.getElementById('btnReadMore');
+     if (btnRM) btnRM.textContent = 'Read More ▸';
+     if (charFullArt) requestAnimationFrame(() => charFullArt.classList.add('visible'));
+   }, 80);
+ }
 
 function init() {
-  buildTabs();
-  const heroChars = buildAvatarGrid();
-  updateCharDisplay(0, heroChars);
-  buildGallery();
+   buildTabs();
+   const heroChars = buildAvatarGrid();
+   updateCharDisplay(0, heroChars);
+   buildGallery();
 
-  const grid = document.getElementById('avatarGrid');
-  if (grid) {
-    grid.onclick = e => {
-      const btn = e.target.closest('.avatar-btn');
-      if (!btn) return;
-      grid.querySelectorAll('.avatar-btn').forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-      const idx = parseInt(btn.dataset.char, 10);
-      const chars = getCurrentHeroChars();
-      updateCharDisplay(idx, chars);
-    };
-  }
+   const grid = document.getElementById('avatarGrid');
+   if (grid) {
+     grid.onclick = e => {
+       const btn = e.target.closest('.avatar-btn');
+       if (!btn) return;
+       grid.querySelectorAll('.avatar-btn').forEach(b => b.classList.remove('active'));
+       btn.classList.add('active');
+       const idx = parseInt(btn.dataset.char, 10);
+       const chars = getCurrentHeroChars();
+       updateCharDisplay(idx, chars);
+     };
+   }
 
-  const totalEl = document.getElementById('totalCount');
-  if (totalEl) totalEl.textContent = getFiltered().length;
+   const totalEl = document.getElementById('totalCount');
+   if (totalEl) totalEl.textContent = getFiltered().length;
 
-  const btnRM = document.getElementById('btnReadMore');
-  const storyContent = document.getElementById('storyContent');
-  if (btnRM && storyContent) {
-    btnRM.addEventListener('click', () => {
-      const isOpen = storyContent.classList.contains('story-expanded');
-      if (isOpen) {
-        storyContent.classList.remove('story-expanded');
-        storyContent.style.maxHeight = '100px';
-        storyContent.style.overflowY = 'hidden';
-        btnRM.textContent = 'Read More ▸';
-      } else {
-        storyContent.classList.add('story-expanded');
-        storyContent.style.maxHeight = 'none';
-        storyContent.style.overflowY = 'auto';
-        btnRM.textContent = 'Show Less ▸';
-      }
-    });
-  }
-}
+   const btnRM = document.getElementById('btnReadMore');
+   const storyContent = document.getElementById('storyContent');
+   if (btnRM && storyContent) {
+     btnRM.addEventListener('click', () => {
+       const isOpen = storyContent.classList.contains('story-expanded');
+       if (isOpen) {
+         storyContent.classList.remove('story-expanded');
+         storyContent.style.maxHeight = '100px';
+         storyContent.style.overflowY = 'hidden';
+         btnRM.textContent = 'Read More ▸';
+       } else {
+         storyContent.classList.add('story-expanded');
+         storyContent.style.maxHeight = 'none';
+         storyContent.style.overflowY = 'auto';
+         btnRM.textContent = 'Show Less ▸';
+       }
+     });
+   }
+
+   const formToggleBtns = document.getElementById('formToggleBtns');
+   if (formToggleBtns) {
+     formToggleBtns.addEventListener('click', e => {
+       const btn = e.target.closest('.form-btn');
+       if (!btn) return;
+       const form = btn.dataset.form;
+       formToggleBtns.querySelectorAll('.form-btn').forEach(b => b.classList.remove('active'));
+       btn.classList.add('active');
+       const charArtImg = document.getElementById('charArtImg');
+       if (charArtImg) {
+         charArtImg.style.transition = 'opacity 0.5s cubic-bezier(0.22,1,0.36,1), transform 0.5s cubic-bezier(0.22,1,0.36,1)';
+         charArtImg.style.opacity = '0';
+         charArtImg.style.transform = 'translateX(60px)';
+         setTimeout(() => {
+           const newSrc = form === 'base' ? charArtImg.dataset.baseImg : charArtImg.dataset.legacyImg;
+           charArtImg.src = newSrc;
+           setTimeout(() => {
+             charArtImg.style.opacity = '1';
+             charArtImg.style.transform = 'translateX(0)';
+           }, 50);
+         }, 200);
+       }
+     });
+   }
+ }
 
 if (document.readyState === 'loading') {
   document.addEventListener('DOMContentLoaded', init);

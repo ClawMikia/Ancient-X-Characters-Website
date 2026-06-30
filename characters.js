@@ -630,7 +630,7 @@ if (charFullArt) charFullArt.classList.remove('visible');
        charSVGArt.style.display = 'none';
        artPlaceholder.style.display = 'none';
        charArtImg.dataset.baseImg = c.img.replace('.png', ' A.png');
-       charArtImg.dataset.legacyImg = c.img.replace(/\/[^/]+\.png$/, '/2nd Form.png');
+       charArtImg.dataset.legacyImg = c.img.replace(/\/[^/]+\.png$/, '/2nd Formq.png');
        charArtImg.onerror = () => {
          charArtImg.style.display = 'none';
          charSVGArt.style.display = 'block';
